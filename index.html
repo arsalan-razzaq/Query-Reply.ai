@@ -51,8 +51,7 @@
       }
     </script>
 
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-884ZZZ5VD0"></script>
+    <!-- Google Analytics (GA4) - deferred until first interaction/idle to keep it off the critical path -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -60,6 +59,27 @@
       }
       gtag("js", new Date());
       gtag("config", "G-884ZZZ5VD0");
+
+      (function () {
+        var loaded = false;
+        function loadGA() {
+          if (loaded) return;
+          loaded = true;
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.googletagmanager.com/gtag/js?id=G-884ZZZ5VD0";
+          document.head.appendChild(s);
+          events.forEach(function (e) {
+            window.removeEventListener(e, loadGA, { passive: true });
+          });
+          clearTimeout(fallback);
+        }
+        var events = ["scroll", "pointermove", "pointerdown", "touchstart", "keydown"];
+        events.forEach(function (e) {
+          window.addEventListener(e, loadGA, { passive: true, once: true });
+        });
+        var fallback = setTimeout(loadGA, 4000);
+      })();
     </script>
   </head>
   <body>
