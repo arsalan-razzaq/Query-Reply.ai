@@ -1,0 +1,61 @@
+import { SITE } from "@/constants/site";
+import type { PricingPlan } from "@/types";
+
+export const PRICING_PLANS: PricingPlan[] = [
+  {
+    id: "free",
+    name: "Free",
+    description: "Perfect for trying QueryReply AI",
+    price: 0,
+    period: "month",
+    badge: "No Credit Card Required",
+    features: [
+      "Works on 1 website",
+      "1 automated saved reply",
+      "No credit card required",
+    ],
+    ctaLabel: "Add to Chrome",
+    ctaHref: SITE.chromeStoreUrl,
+  },
+  {
+    id: "monthly",
+    name: "Monthly",
+    description: "Best for active sellers",
+    price: 5,
+    originalPrice: 10,
+    period: "month",
+    badge: "Pre Launch",
+    discountLabel: "Pre-Book Launch Offer: 50% OFF",
+    highlight: true,
+    features: [
+      "Everything in Free, plus",
+      "Works on unlimited websites",
+      "10,000 automated AI replies / month",
+      "Custom AI instructions",
+      "Faster AI response generation",
+      "Priority support",
+      "Early access to new features",
+    ],
+    ctaLabel: "Get Monthly Plan",
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    description: "Built for teams and large businesses",
+    price: 0,
+    period: "month",
+    badge: "Contact Us",
+    isCustom: true,
+    features: [
+      "Everything in Monthly",
+      "Multi-user access",
+      "Team management",
+      "Custom integrations",
+      "Volume-based pricing",
+      "Dedicated onboarding",
+      "Premium support",
+    ],
+    ctaLabel: "Contact Us",
+    ctaHref: `mailto:${SITE.email}?subject=${encodeURIComponent("Enterprise Plan Inquiry")}`,
+  },
+];
