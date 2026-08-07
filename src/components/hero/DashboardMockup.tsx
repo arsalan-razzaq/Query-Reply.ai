@@ -14,6 +14,9 @@ export function DashboardMockup() {
         <img
           src="/auto_reply.gif"
           alt="QueryReply AI auto reply demo"
+          width={640}
+          height={360}
+          fetchPriority="high"
           className="w-full rounded-xl"
         />
       </div>
