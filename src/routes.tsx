@@ -9,6 +9,20 @@ import Home from "@/pages/Home";
  * Suspense fallback — a fallback in the emitted HTML would be exactly what
  * non-JS crawlers end up indexing.
  */
+/**
+ * Blog bodies live one-file-per-post. The glob keeps routing in step with the
+ * filesystem, so adding src/content/blog/<slug>.tsx plus its BLOG_POSTS entry
+ * is all a new article needs — no route table to update by hand.
+ */
+const POST_MODULES = import.meta.glob<{ default: ComponentType }>("./content/blog/*.tsx");
+
+const BLOG_LOADERS = Object.fromEntries(
+  Object.entries(POST_MODULES).map(([file, load]) => [
+    `/blog/${file.replace("./content/blog/", "").replace(/\.tsx$/, "")}`,
+    load,
+  ]),
+);
+
 const ROUTE_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> = {
   "/pricing": () => import("@/pages/Pricing"),
   "/docs": () => import("@/pages/Documentation"),
@@ -17,7 +31,8 @@ const ROUTE_LOADERS: Record<string, () => Promise<{ default: ComponentType }>> =
   "/privacy-policy": () => import("@/pages/PrivacyPolicy"),
   "/terms-of-service": () => import("@/pages/TermsOfService"),
   "/refund-policy": () => import("@/pages/RefundPolicy"),
-  /** Catch-all. Prerendered to dist/404.html, which Vercel serves with a real 404 status. */
+  ...BLOG_LOADERS,
+  /** Catch-all. Prerendered to dist/404.html, which the server returns with a real 404 status. */
   "*": () => import("@/pages/NotFound"),
 };
 

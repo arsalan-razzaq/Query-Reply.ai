@@ -134,6 +134,53 @@
       transform: none;
     }
   }
+
+  /*
+   * Article body typography. Written as element selectors rather than utility
+   * classes so post files stay plain prose — the markup a writer produces is
+   * the markup crawlers parse, with no class noise in between.
+   */
+  .prose-article {
+    @apply text-base leading-relaxed text-white/70 sm:text-lg;
+  }
+  .prose-article > * + * {
+    @apply mt-6;
+  }
+  .prose-article h2 {
+    @apply mt-14 text-2xl font-bold tracking-tight text-white sm:text-3xl;
+  }
+  .prose-article h3 {
+    @apply mt-10 text-lg font-semibold text-white sm:text-xl;
+  }
+  .prose-article h2 + *,
+  .prose-article h3 + * {
+    @apply mt-4;
+  }
+  .prose-article strong {
+    @apply font-semibold text-white;
+  }
+  .prose-article a {
+    @apply font-medium text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white;
+  }
+  .prose-article ul,
+  .prose-article ol {
+    @apply space-y-3 pl-6;
+  }
+  .prose-article ul {
+    @apply list-disc marker:text-brand-violet;
+  }
+  .prose-article ol {
+    @apply list-decimal marker:text-white/40;
+  }
+  .prose-article blockquote {
+    @apply border-l-2 border-brand-violet/60 pl-6 text-white/80 italic;
+  }
+  .prose-article code {
+    @apply rounded-md bg-white/10 px-1.5 py-0.5 text-[0.9em] text-white;
+  }
+  .prose-article hr {
+    @apply my-12 border-white/10;
+  }
 }
 
 :root {

@@ -4,6 +4,7 @@ import { FEATURES } from "@/constants/features";
 import { PRICING_PLANS } from "@/constants/pricing";
 import { INTEGRATIONS } from "@/constants/integrations";
 import { ROUTE_SEO, fullTitle, getRouteSEO, type RouteSEO } from "@/constants/seo";
+import { BLOG_POSTS, BLOG_POSTS_BY_DATE, blogPostPath, type BlogPost } from "@/constants/blog";
 
 /**
  * Build-time only. Imported by src/entry-server.tsx and never by the client
@@ -13,6 +14,7 @@ import { ROUTE_SEO, fullTitle, getRouteSEO, type RouteSEO } from "@/constants/se
 const ORG_ID = `${SITE.url}/#organization`;
 const SITE_ID = `${SITE.url}/#website`;
 const APP_ID = `${SITE.url}/#software`;
+const BLOG_ID = `${SITE.url}/blog#blog`;
 
 /* ------------------------------------------------------------------ */
 /* Structured data (schema.org)                                        */
@@ -149,6 +151,10 @@ function howToNode() {
 
 function breadcrumbNode(route: RouteSEO) {
   const items = [{ name: "Home", item: `${SITE.url}/` }];
+  // Articles sit a level deeper: Home > Blog > Article.
+  if (route.path.startsWith("/blog/")) {
+    items.push({ name: "Blog", item: `${SITE.url}/blog` });
+  }
   if (route.path !== "/") {
     items.push({ name: route.breadcrumb ?? route.title, item: `${SITE.url}${route.path}` });
   }
@@ -179,6 +185,43 @@ function webPageNode(route: RouteSEO) {
   };
 }
 
+function blogPostingNode(post: BlogPost) {
+  const url = `${SITE.url}${blogPostPath(post)}`;
+  return {
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: post.title,
+    description: post.description,
+    url,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    keywords: post.tags,
+    wordCount: post.readingMinutes * 200,
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    isPartOf: { "@id": BLOG_ID },
+    mainEntityOfPage: { "@id": `${url}#webpage` },
+    image: `${SITE.url}/og-image.png`,
+    inLanguage: "en",
+  };
+}
+
+function blogNode() {
+  return {
+    "@type": "Blog",
+    "@id": BLOG_ID,
+    url: `${SITE.url}/blog`,
+    name: `${SITE.name} Blog`,
+    description:
+      "Practical writing on answering product questions accurately at scale, plus product updates.",
+    publisher: { "@id": ORG_ID },
+    inLanguage: "en",
+    blogPost: BLOG_POSTS_BY_DATE.map((post) => ({
+      "@id": `${SITE.url}${blogPostPath(post)}#article`,
+    })),
+  };
+}
+
 /** The full @graph for a route — one script tag, entities linked by @id. */
 export function structuredData(path: string) {
   const route = getRouteSEO(path);
@@ -192,6 +235,15 @@ export function structuredData(path: string) {
 
   if (route.path === "/pricing") graph.push(faqNode());
   if (route.path === "/docs") graph.push(howToNode());
+
+  if (route.path === "/blog") {
+    graph.push(blogNode(), ...BLOG_POSTS_BY_DATE.map(blogPostingNode));
+  }
+
+  if (route.path.startsWith("/blog/")) {
+    const post = BLOG_POSTS.find((p) => blogPostPath(p) === route.path);
+    if (post) graph.push(blogPostingNode(post));
+  }
 
   return { "@context": "https://schema.org", "@graph": graph };
 }
@@ -265,16 +317,19 @@ const PRIORITY: Record<string, string> = {
 
 export function renderSitemap(lastmod: string): string {
   const urls = ROUTE_SEO.filter((r) => !r.noindex)
-    .map((r) =>
-      [
+    .map((r) => {
+      const post = BLOG_POSTS.find((p) => blogPostPath(p) === r.path);
+      // An article's lastmod is its own publish/update date, not the build date —
+      // stamping today on every URL every deploy teaches crawlers to ignore it.
+      return [
         "  <url>",
         `    <loc>${SITE.url}${r.path}</loc>`,
-        `    <lastmod>${lastmod}</lastmod>`,
-        `    <changefreq>${CHANGEFREQ[r.path] ?? "yearly"}</changefreq>`,
-        `    <priority>${PRIORITY[r.path] ?? "0.3"}</priority>`,
+        `    <lastmod>${post ? (post.updatedAt ?? post.publishedAt) : lastmod}</lastmod>`,
+        `    <changefreq>${CHANGEFREQ[r.path] ?? (post ? "monthly" : "yearly")}</changefreq>`,
+        `    <priority>${PRIORITY[r.path] ?? (post ? "0.7" : "0.3")}</priority>`,
         "  </url>",
-      ].join("\n"),
-    )
+      ].join("\n");
+    })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -329,6 +384,7 @@ ${PRICING_PLANS.map(planLine).join("\n")}
 - [Documentation](${SITE.url}/docs): install and setup guide
 - [Support Center](${SITE.url}/support): help and contact
 - [Blog](${SITE.url}/blog): product updates and guides
+${BLOG_POSTS_BY_DATE.map((p) => `  - [${p.title}](${SITE.url}${blogPostPath(p)}): ${p.description}`).join("\n")}
 - [Full context for AI](${SITE.url}/llms-full.txt): complete FAQ and setup text
 
 ## Optional

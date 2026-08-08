@@ -1,4 +1,5 @@
 import { SITE } from "@/constants/site";
+import { BLOG_POSTS, blogPostPath } from "@/constants/blog";
 
 /**
  * Single source of truth for every indexable route.
@@ -21,7 +22,7 @@ export interface RouteSEO {
   noindex?: boolean;
 }
 
-export const ROUTE_SEO: RouteSEO[] = [
+const STATIC_ROUTES: RouteSEO[] = [
   {
     path: "/",
     title: "QueryReply AI | AI Customer Service Automation for Sellers",
@@ -76,6 +77,16 @@ export const ROUTE_SEO: RouteSEO[] = [
     breadcrumb: "Refund Policy",
   },
 ];
+
+/** Each post is a real prerendered URL, so it needs a real ROUTE_SEO entry. */
+const BLOG_ROUTES: RouteSEO[] = BLOG_POSTS.map((post) => ({
+  path: blogPostPath(post),
+  title: post.seoTitle,
+  description: post.description,
+  breadcrumb: post.title,
+}));
+
+export const ROUTE_SEO: RouteSEO[] = [...STATIC_ROUTES, ...BLOG_ROUTES];
 
 /**
  * Kept out of ROUTE_SEO so it never reaches the sitemap. The build renders it
