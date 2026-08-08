@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/common/Logo";
 import { Container } from "@/components/common/Container";
-import { FOOTER_LINK_GROUPS, SOCIAL_LINKS } from "@/constants/footer";
+import { FOOTER_LINK_GROUPS, ACTIVE_SOCIAL_LINKS } from "@/constants/footer";
 import { SITE } from "@/constants/site";
 import { scrollToHash } from "@/utils/scroll";
 
@@ -17,7 +17,7 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-sm text-white/50">{SITE.description}</p>
 
             <div className="mt-6 flex items-center gap-3">
-              {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
+              {ACTIVE_SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}

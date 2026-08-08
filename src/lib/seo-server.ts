@@ -3,6 +3,7 @@ import { FAQS } from "@/constants/faq";
 import { FEATURES } from "@/constants/features";
 import { PRICING_PLANS } from "@/constants/pricing";
 import { INTEGRATIONS } from "@/constants/integrations";
+import { ACTIVE_SOCIAL_LINKS } from "@/constants/footer";
 import { ROUTE_SEO, fullTitle, getRouteSEO, type RouteSEO } from "@/constants/seo";
 import { BLOG_POSTS, BLOG_POSTS_BY_DATE, blogPostPath, type BlogPost } from "@/constants/blog";
 
@@ -35,6 +36,11 @@ function organizationNode() {
     },
     description: SITE.description,
     slogan: SITE.tagline,
+    // sameAs is what lets Google and answer engines treat the site and the
+    // social profiles as one entity rather than unrelated pages sharing a name.
+    // Only real profiles belong here — a placeholder would link the brand to
+    // something that isn't it.
+    sameAs: ACTIVE_SOCIAL_LINKS.map((link) => link.href),
   };
 }
 

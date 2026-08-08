@@ -30,9 +30,23 @@ export const FOOTER_LINK_GROUPS: FooterLinkGroup[] = [
   },
 ];
 
+/**
+ * Only entries with a real href render — see Footer. An icon pointing at "#"
+ * is a dead link for visitors and a dangling signal for crawlers, so accounts
+ * that don't exist yet stay listed here but stay hidden until they do.
+ */
 export const SOCIAL_LINKS: SocialLink[] = [
+  { label: "Instagram", href: "https://www.instagram.com/queryreplyai/", icon: InstagramSocialIcon },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61593271372224",
+    icon: FacebookSocialIcon,
+  },
   { label: "X (Twitter)", href: "#", icon: XSocialIcon },
   { label: "LinkedIn", href: "#", icon: LinkedInSocialIcon },
-  { label: "Instagram", href: "#", icon: InstagramSocialIcon },
-  { label: "Facebook", href: "#", icon: FacebookSocialIcon },
 ];
+
+/** The subset that actually points somewhere — used for rendering and for schema sameAs. */
+export const ACTIVE_SOCIAL_LINKS: SocialLink[] = SOCIAL_LINKS.filter(
+  (link) => link.href !== "#",
+);
