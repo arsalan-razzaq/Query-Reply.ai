@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { Container } from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
-import { formatPostDate, type BlogPost } from "@/constants/blog";
+import {
+  BLOG_POSTS_BY_DATE,
+  blogPostPath,
+  formatPostDate,
+  type BlogPost,
+} from "@/constants/blog";
 import { usePageSEO } from "@/hooks/usePageSEO";
 import { SITE } from "@/constants/site";
 
@@ -20,6 +25,10 @@ interface ArticleLayoutProps {
  */
 export function ArticleLayout({ post, children }: ArticleLayoutProps) {
   usePageSEO(`/blog/${post.slug}`);
+
+  // Cross-links between articles give crawlers a path through the whole set
+  // instead of leaving each one an island reachable only from the index.
+  const related = BLOG_POSTS_BY_DATE.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
     <article className="bg-brand-ink py-32">
@@ -68,7 +77,28 @@ export function ArticleLayout({ post, children }: ArticleLayoutProps) {
 
         <div className="prose-article mt-12">{children}</div>
 
-        <aside className="mt-16 rounded-2xl border border-white/10 bg-white/5 p-8 text-center">
+        {related.length > 0 && (
+          <section aria-labelledby="related-heading" className="mt-16 border-t border-white/10 pt-10">
+            <h2 id="related-heading" className="text-lg font-semibold text-white">
+              Keep reading
+            </h2>
+            <ul className="mt-5 space-y-3">
+              {related.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    to={blogPostPath(item)}
+                    className="group flex items-start gap-3 text-sm text-white/60 transition-colors hover:text-white sm:text-base"
+                  >
+                    <ArrowRight className="mt-1 size-4 shrink-0 text-brand-violet transition-transform group-hover:translate-x-0.5" />
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <aside className="mt-14 rounded-2xl border border-white/10 bg-white/5 p-8 text-center">
           <p className="text-lg font-semibold text-white">
             Let {SITE.name} handle the replies
           </p>

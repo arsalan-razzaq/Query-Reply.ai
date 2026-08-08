@@ -33,6 +33,36 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 6,
     tags: ["AI customer service", "Accuracy"],
   },
+  {
+    slug: "how-to-auto-reply-to-amazon-buyer-messages",
+    title: "How to auto-reply to Amazon buyer messages",
+    seoTitle: "How to Auto-Reply to Amazon Buyer Messages",
+    description:
+      "Amazon expects a reply within 24 hours, every day of the year. Here's how sellers automate buyer messages without sending the wrong product's details, and where canned templates stop working.",
+    publishedAt: "2026-08-08",
+    readingMinutes: 7,
+    tags: ["Amazon", "Guides"],
+  },
+  {
+    slug: "queryreply-ai-vs-chatgpt-for-customer-replies",
+    title: "QueryReply AI vs ChatGPT for customer replies",
+    seoTitle: "QueryReply AI vs ChatGPT for Customer Replies",
+    description:
+      "Both write the reply for you. The difference is what each one knows when it writes. A practical comparison of copy-pasting into ChatGPT versus a tool that reads the listing itself.",
+    publishedAt: "2026-08-08",
+    readingMinutes: 6,
+    tags: ["Comparison", "AI customer service"],
+  },
+  {
+    slug: "answering-product-questions-across-multiple-marketplaces",
+    title: "Answering product questions across multiple marketplaces",
+    seoTitle: "Handling Customer Questions on Multiple Marketplaces",
+    description:
+      "Selling the same catalogue on Amazon, eBay, Etsy and your own store means four inboxes and four sets of listing data. Here's how to keep replies accurate when the same product exists in several places at once.",
+    publishedAt: "2026-08-08",
+    readingMinutes: 7,
+    tags: ["Multi-channel", "Guides"],
+  },
 ];
 
 /** Newest first — the order the index page renders. */
