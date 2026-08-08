@@ -1,12 +1,8 @@
-import { motion } from "framer-motion";
-
 export function DashboardMockup() {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.92, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-      className="relative mx-auto w-full max-w-xl"
+    <div
+      className="enter-scale relative mx-auto w-full max-w-xl"
+      style={{ animationDelay: "0.3s" }}
     >
       <div className="absolute -inset-10 -z-10 rounded-[3rem] bg-brand-violet/20 blur-[80px]" />
 
@@ -26,6 +22,6 @@ export function DashboardMockup() {
           <source src="/auto_reply.mp4" type="video/mp4" />
         </video>
       </div>
-    </motion.div>
+    </div>
   );
 }

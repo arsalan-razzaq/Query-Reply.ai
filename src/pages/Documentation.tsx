@@ -31,11 +31,7 @@ const STEPS = [
 ];
 
 export default function Documentation() {
-  usePageSEO({
-    title: "Documentation",
-    description: `Everything you need to go from install to your first auto-reply with ${SITE.name}.`,
-    path: "/docs",
-  });
+  usePageSEO("/docs");
 
   return (
     <section className="bg-brand-ink py-32">

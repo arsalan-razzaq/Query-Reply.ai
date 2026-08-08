@@ -38,11 +38,7 @@ const SECTIONS = [
 ];
 
 export default function TermsOfService() {
-  usePageSEO({
-    title: "Terms of Service",
-    description: `The rules for using ${SITE.name}.`,
-    path: "/terms-of-service",
-  });
+  usePageSEO("/terms-of-service");
 
   return (
     <LegalPageLayout

@@ -7,14 +7,9 @@ import { HowItWorks } from "@/components/how-it-works/HowItWorks";
 import { Cta } from "@/components/cta/Cta";
 import { scrollToHash } from "@/utils/scroll";
 import { usePageSEO } from "@/hooks/usePageSEO";
-import { SITE } from "@/constants/site";
 
 export default function Home() {
-  usePageSEO({
-    title: "QueryReply AI | AI Customer Service Automation",
-    description: SITE.description,
-    path: "/",
-  });
+  usePageSEO("/");
 
   useEffect(() => {
     if (window.location.hash) {

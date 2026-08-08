@@ -61,6 +61,81 @@
   }
 }
 
+/*
+ * Declared outside `@theme`: Tailwind only emits keyframes from that block when
+ * a matching `--animate-*` variable references them, and these are driven by
+ * the hand-written utilities below rather than by an animation shorthand.
+ */
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes enter-scale {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes enter-down {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer utilities {
+  /*
+   * Above-the-fold entrance animations run in CSS, not JavaScript.
+   * framer-motion drives its animations with requestAnimationFrame, which only
+   * starts once the bundle has parsed — leaving the hero (the LCP element)
+   * painted at opacity 0 until then and wasting the prerendered HTML. CSS
+   * keyframes start on the very first frame instead. Scroll-triggered reveals
+   * below the fold stay on framer-motion, which is the right tool for those.
+   */
+  .enter-up,
+  .enter-scale,
+  .enter-down {
+    opacity: 0;
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-fill-mode: forwards;
+  }
+  .enter-up {
+    animation-name: enter-up;
+  }
+  .enter-scale {
+    animation-name: enter-scale;
+    animation-duration: 0.7s;
+  }
+  .enter-down {
+    animation-name: enter-down;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .enter-up,
+    .enter-scale,
+    .enter-down {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
 :root {
   --radius: 0.75rem;
 

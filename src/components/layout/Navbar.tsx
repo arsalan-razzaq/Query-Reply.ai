@@ -45,12 +45,9 @@ export function Navbar() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+    <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        "enter-down fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
           ? "border-b border-white/10 bg-brand-ink/70 py-3 shadow-lg shadow-black/10 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent py-5",
@@ -147,6 +144,6 @@ export function Navbar() {
           </Button>
         </Sheet>
       </Container>
-    </motion.header>
+    </header>
   );
 }

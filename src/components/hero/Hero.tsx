@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/common/Container";
@@ -13,15 +12,11 @@ const HIGHLIGHTS = [
   "No credit card required",
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const, delay },
-  }),
-};
-
+/**
+ * The hero is the LCP block, so its entrance runs on CSS keyframes rather than
+ * framer-motion — see the .enter-* utilities in index.css. It paints from the
+ * prerendered HTML without waiting for the JS bundle.
+ */
 export function Hero() {
   return (
     <section
@@ -32,47 +27,32 @@ export function Hero() {
 
       <Container className="relative grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
         <div className="text-center lg:text-left">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            custom={0}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur-sm"
-          >
+          <div className="enter-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur-sm">
             <span className="bg-gradient-brand size-1.5 rounded-full" />
             AI Customer Service Automation
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            custom={0.1}
-            className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
+          <h1
+            className="enter-up text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
+            style={{ animationDelay: "0.1s" }}
           >
             Reply to Every Customer Automatically,
             <br />
             <span className="text-gradient">Powered by AI.</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            custom={0.2}
-            className="mx-auto mt-6 max-w-xl text-base text-white/60 sm:text-lg lg:mx-0"
+          <p
+            className="enter-up mx-auto mt-6 max-w-xl text-base text-white/60 sm:text-lg lg:mx-0"
+            style={{ animationDelay: "0.2s" }}
           >
             Install QueryReply AI and get started with our Lifetime Free plan.
             Automatically greet every new customer with your own one saved welcome
             message. Upgrade anytime for advanced AI features.
-          </motion.p>
+          </p>
 
-          <motion.ul
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            custom={0.3}
-            className="mx-auto mt-8 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:mx-0"
+          <ul
+            className="enter-up mx-auto mt-8 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:mx-0"
+            style={{ animationDelay: "0.3s" }}
           >
             {HIGHLIGHTS.map((item) => (
               <li key={item} className="flex items-center gap-2 text-sm text-white/70">
@@ -80,14 +60,11 @@ export function Hero() {
                 {item}
               </li>
             ))}
-          </motion.ul>
+          </ul>
 
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            custom={0.4}
-            className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start"
+          <div
+            className="enter-up mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start"
+            style={{ animationDelay: "0.4s" }}
           >
             <Button
               asChild
@@ -99,7 +76,7 @@ export function Hero() {
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Button>
-          </motion.div>
+          </div>
         </div>
 
         <DashboardMockup />

@@ -28,11 +28,7 @@ const TOPICS = [
 ];
 
 export default function SupportCenter() {
-  usePageSEO({
-    title: "Support Center",
-    description: `Get help with ${SITE.name} — getting started, billing, troubleshooting, and account settings.`,
-    path: "/support",
-  });
+  usePageSEO("/support");
 
   return (
     <section className="bg-brand-ink py-32">

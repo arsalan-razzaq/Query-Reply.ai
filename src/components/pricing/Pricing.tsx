@@ -14,6 +14,7 @@ export function Pricing() {
         </div>
 
         <SectionHeading
+          as="h1"
           eyebrow="Pricing"
           title="Simple Pricing for Every Seller"
           description="Every QueryReply AI plan delivers accurate, product-specific AI replies generated only from the listing your customer is viewing, never from unrelated products. Start free, then upgrade to unlock unlimited websites, unlimited automated replies, and priority support."

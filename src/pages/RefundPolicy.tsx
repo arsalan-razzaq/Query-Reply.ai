@@ -22,11 +22,7 @@ const SECTIONS = [
 ];
 
 export default function RefundPolicy() {
-  usePageSEO({
-    title: "Refund Policy",
-    description: `Here's exactly how refunds work for ${SITE.name}.`,
-    path: "/refund-policy",
-  });
+  usePageSEO("/refund-policy");
 
   return (
     <LegalPageLayout

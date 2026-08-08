@@ -62,11 +62,7 @@ const SECTIONS = [
 ];
 
 export default function PrivacyPolicy() {
-  usePageSEO({
-    title: "Privacy Policy",
-    description: `How ${SITE.name} collects, uses, and protects your information.`,
-    path: "/privacy-policy",
-  });
+  usePageSEO("/privacy-policy");
 
   return (
     <LegalPageLayout

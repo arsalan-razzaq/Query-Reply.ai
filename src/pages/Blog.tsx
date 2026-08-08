@@ -4,11 +4,7 @@ import { SITE } from "@/constants/site";
 import { usePageSEO } from "@/hooks/usePageSEO";
 
 export default function Blog() {
-  usePageSEO({
-    title: "Blog",
-    description: `Product updates, auto-reply tips, and platform guides from ${SITE.name}.`,
-    path: "/blog",
-  });
+  usePageSEO("/blog");
 
   return (
     <section className="bg-brand-ink py-32">

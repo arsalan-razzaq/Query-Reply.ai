@@ -6,12 +6,7 @@ import { usePageSEO } from "@/hooks/usePageSEO";
 import { scrollToHash } from "@/utils/scroll";
 
 export default function PricingPage() {
-  usePageSEO({
-    title: "Pricing",
-    description:
-      "Simple pricing for every seller. Start free, then upgrade for unlimited websites, unlimited automated AI replies, and priority support.",
-    path: "/pricing",
-  });
+  usePageSEO("/pricing");
 
   useEffect(() => {
     if (window.location.hash) {
