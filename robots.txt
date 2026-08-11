@@ -1,0 +1,73 @@
+# https://queryreply.ai/robots.txt
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Answer / AI engines.
+# OAI-SearchBot and ChatGPT-User are what surface pages inside ChatGPT answers;
+# GPTBot is the training crawler. Allowing all three maximises the chance of
+# being retrieved and cited. Remove any line below to opt that crawler out.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Everything else
+User-agent: *
+Allow: /
+
+# Plain-text product brief for LLMs: /llms.txt and /llms-full.txt
+Sitemap: https://queryreply.ai/sitemap.xml

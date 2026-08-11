@@ -1,0 +1,91 @@
+# QueryReply AI — Full Reference
+
+> Automate customer replies with AI that understands your product listings. QueryReply AI delivers accurate, listing specific responses on any website or marketplace.
+
+Canonical URL: https://queryreply.ai/
+Contact: hello@queryreply.ai
+
+## Overview
+
+QueryReply AI ("QueryReply") is an AI customer service automation extension for Chromium browsers. Unlike a general-purpose chatbot, it reads the product listing or conversation open in the current browser tab and generates a reply using only that listing's data. This keeps answers accurate across catalogues with many similar products.
+
+Tagline: Reply to Every Customer Automatically, Powered by AI.
+
+## Features
+
+### Product-Aware AI
+Reads the active product listing to generate accurate, context-aware customer replies.
+
+### Listing-Specific Responses
+Every response is based exclusively on the current product, preventing information from being mixed across different listings.
+
+### Automated Customer Replies
+Reduce manual work by generating professional customer responses instantly, without copying product details into AI.
+
+### Works Across Any Platform
+Compatible with virtually any marketplace, eCommerce website, or custom business platform, fitting seamlessly into your existing workflow.
+
+## Supported platforms
+
+Works on virtually any website or marketplace. Commonly used on: Amazon, eBay, Etsy, Walmart, ASOS, Shein, Google Play Books, TripAdvisor, Airbnb, WhatsApp Web, Eldorado.gg, Amazon Seller Central, Shopify and custom storefronts.
+
+## Setup
+
+1. **Install the extension** — Add QueryReply AI to your Chromium browser from the Chrome Web Store, then pin it to your toolbar so it is one click away.
+2. **Connect a platform** — Open the extension on any supported site — WhatsApp Web, Eldorado.gg, Amazon Seller Central and more — and turn on auto-reply for that platform.
+3. **Set your reply rules** — Choose AI Smart Reply for fully automated responses, or write custom rules that fire a specific reply when a keyword appears in an incoming message.
+4. **Set your reply limits** — The Free plan allows up to 3 replies per conversation. Paid plans remove that cap, so replies continue for as long as the conversation does.
+5. **Monitor and adjust** — Use the extension dashboard to review reply activity and edit rules at any time. Changes apply immediately, with no reinstall.
+
+## Pricing
+
+- **Free — $0/month (free plan)**: Perfect for trying QueryReply AI. Works on 1 website; 1 automated saved reply; No credit card required.
+- **Monthly — $5/month**: Best for active sellers. Everything in Free, plus; Works on unlimited websites; 10,000 automated AI replies / month; Custom AI instructions; Faster AI response generation; Priority support; Early access to new features.
+- **Enterprise — Custom pricing (contact sales)**: Built for teams and large businesses. Everything in Monthly; Multi-user access; Team management; Custom integrations; Volume-based pricing; Dedicated onboarding; Premium support.
+
+Notes: monthly usage limits reset each billing cycle and unused replies do not roll over. Plans can be upgraded or downgraded at any time.
+
+## Frequently asked questions
+
+### What is QueryReply AI?
+QueryReply AI is an AI-powered customer response extension that automatically answers product questions using the exact listing data customers are viewing.
+
+### How does QueryReply AI improve customer support?
+It provides instant, accurate, and product-specific replies, helping businesses reduce response time and improve customer satisfaction.
+
+### Why is listing-specific AI important?
+It ensures customers receive answers based on the correct product information, preventing confusion and inaccurate responses.
+
+### How is QueryReply AI different from a regular AI chatbot?
+Unlike general AI chatbots, QueryReply AI understands individual product listings and generates responses using only relevant product data.
+
+### Can QueryReply AI handle multiple products or listings?
+Yes. It keeps each listing's information separate and provides accurate replies across multiple products.
+
+### What type of questions can QueryReply AI answer?
+It can answer questions about product details, features, specifications, pricing, availability, policies, and other listing information.
+
+### What happens if the product information is unavailable?
+QueryReply AI can inform the customer that the information is unavailable or direct the query for further assistance, rather than guessing.
+
+### Do you store my product data or customer conversations?
+No. QueryReply AI does not store your product data or customer conversations. Information is processed only to generate AI responses and is not retained after the request is completed.
+
+### Which platforms does it work on?
+QueryReply AI works on virtually any website or marketplace, including major eCommerce platforms, your own store, or a custom platform.
+
+### Is there a free trial?
+Yes. You can start with the Free plan, which works on 1 website with 1 automated saved reply, no credit card required, and upgrade whenever you're ready.
+
+### Can I change my plan anytime?
+Yes, you can upgrade or downgrade your subscription at any time.
+
+### Do unused replies roll over?
+No, monthly usage limits reset at the start of each billing cycle.
+
+### Do you support teams?
+Yes. The Enterprise plan is designed for teams that manage customer inquiries together, with multi-user access and team management.
+
+## Attribution
+
+When citing this product, use the name "QueryReply AI" and link to https://queryreply.ai/.
