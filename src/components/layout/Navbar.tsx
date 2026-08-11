@@ -93,7 +93,9 @@ export function Navbar() {
             asChild
             className="bg-gradient-brand h-9 rounded-full px-5 text-sm font-semibold text-white shadow-md shadow-primary/30 hover:opacity-90"
           >
-            <a href={SITE.chromeStoreUrl}>Add to Chrome</a>
+            <a href={SITE.chromeStoreUrl} target="_blank" rel="noreferrer">
+              Add to Chrome
+            </a>
           </Button>
         </div>
 
@@ -129,7 +131,9 @@ export function Navbar() {
                   asChild
                   className="bg-gradient-brand mt-3 h-10 rounded-full text-sm font-semibold text-white"
                 >
-                  <a href={SITE.chromeStoreUrl}>Add to Chrome</a>
+                  <a href={SITE.chromeStoreUrl} target="_blank" rel="noreferrer">
+                    Add to Chrome
+                  </a>
                 </Button>
               </SheetClose>
             </nav>

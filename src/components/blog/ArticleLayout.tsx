@@ -111,7 +111,7 @@ export function ArticleLayout({ post, children }: ArticleLayoutProps) {
               asChild
               className="bg-gradient-brand group h-11 rounded-xl px-6 font-semibold text-white shadow-lg shadow-primary/30 hover:opacity-95"
             >
-              <a href={SITE.chromeStoreUrl}>
+              <a href={SITE.chromeStoreUrl} target="_blank" rel="noreferrer">
                 Add to Chrome
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
               </a>

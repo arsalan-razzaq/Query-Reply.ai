@@ -33,7 +33,7 @@ export function Cta() {
               size="lg"
               className="bg-gradient-brand group h-12 rounded-xl px-8 text-base font-semibold text-white shadow-lg shadow-primary/30 transition-transform hover:scale-[1.02] hover:opacity-95"
             >
-              <a href={SITE.chromeStoreUrl}>
+              <a href={SITE.chromeStoreUrl} target="_blank" rel="noreferrer">
                 Add to Chrome
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
               </a>

@@ -5,5 +5,6 @@ export const SITE = {
     "Automate customer replies with AI that understands your product listings. QueryReply AI delivers accurate, listing specific responses on any website or marketplace.",
   url: "https://queryreply.ai",
   email: "hello@queryreply.ai",
-  chromeStoreUrl: "#",
+  chromeStoreUrl:
+    "https://chromewebstore.google.com/detail/queryreply-marketplace-ai/ajbdnhiebicpbmjaimpdhajlboganlof",
 } as const;

@@ -83,7 +83,15 @@ export function PricingCard({ plan, index }: PricingCardProps) {
               : "border border-border bg-background text-foreground hover:bg-muted",
           )}
         >
-          <a href={plan.ctaHref}>{plan.ctaLabel}</a>
+          {/* mailto: plans stay in the current tab; the store link opens a new one. */}
+          <a
+            href={plan.ctaHref}
+            {...(plan.ctaHref.startsWith("http")
+              ? { target: "_blank", rel: "noreferrer" }
+              : {})}
+          >
+            {plan.ctaLabel}
+          </a>
         </Button>
       ) : (
         <Button

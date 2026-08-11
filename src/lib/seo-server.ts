@@ -68,6 +68,9 @@ function softwareApplicationNode() {
     applicationSubCategory: "Customer Service Automation",
     operatingSystem: "Chrome, Edge, Brave (Chromium browsers)",
     url: `${SITE.url}/`,
+    // The listing the "Add to Chrome" buttons point at — tells search and answer
+    // engines where the app is actually obtained, not just described.
+    installUrl: SITE.chromeStoreUrl,
     description: SITE.description,
     publisher: { "@id": ORG_ID },
     featureList: FEATURES.map((f) => `${f.title}: ${f.description}`),
